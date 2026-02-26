@@ -1,0 +1,38 @@
+robot:
+  type: woan_teleop_follower
+  id: follower_arm
+  port: /dev/ttyACM2          # follower arm serial port, check with: ls /dev/ttyACM*  ACM1为右，ACM2为左
+  baud_rate: 961200
+  robot_model: damiao_left
+  version: v3.2
+  woan_description_path: /home/woan/woan_description
+  slcan_type: damiao          # "damiao" or "canable"
+  use_velocity: true
+  enable_gripper: true
+  home_joints_positions: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+  # cameras:
+  #   wrist:
+  #     type: opencv
+  #     index_or_path: /dev/v4l/by-path/pci-0000:80:14.0-usb-0:6.2:1.0-video-index
+  #     width: 640
+  #     height: 480
+  #     fps: 30
+
+teleop:
+  type: woan_teleop_leader
+  id: leader_arm
+  port: /dev/ttyACM0          # leader arm serial port, check with: ls /dev/ttyACM*
+  baud_rate: 961200
+  robot_model: damiao_left
+  version: v3.2
+  is_teleop_leader: true
+  woan_description_path: /home/woan/woan_description
+  slcan_type: damiao
+  use_velocity: true
+  enable_gripper_joystick: true
+  home_joints_positions: [-0.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+
+fps: 60
+display_data: true
+display_ip: 127.0.0.1
+display_port: 9876
